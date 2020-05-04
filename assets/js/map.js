@@ -30,14 +30,17 @@ d3.json(geoUrls).then(function(data) {
     const map = svg.select('.map-container').selectAll('.map')
         .data(topojson.feature(data, data.objects.states).features)
         .join('path')
+        .attr("fill", "rgb(200, 200, 200)")
         .classed('map', true)
-        .attr("fill", "none")
         .attr("stroke", "#777")
         .attr("stroke-width", 0.5)
         .attr("stroke-linejoin", "round")
         .attr("d", d3.geoPath(projection))
-        .on('click', function(d){
-            d3.select(this).attr('fill', 'steelblue')
+        .on('mouseover', function(d){
+            d3.select(this).attr('fill', 'yellow')
             console.log(d)
+        })
+        .on('mouseout', function(){
+            d3.select(this).attr('fill', 'rgb(200, 200, 200)')
         })
 })

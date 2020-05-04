@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Numbers of people who own gun</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+          <div class="col-md-12 jumbotron text-center">
+            <h3>Gun Information about the United States</h3>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+                <div id="table">
+                    <table border="1" class="dataframe">
+                        <thead>
+                            <tr style="text-align: right;">
+                            <th></th>
+                            <th>Fiscal_Year</th>
+                            <th>Firearms_Processed</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                            <th>0</th>
+                            <td>2018</td>
+                            <td>1422353</td>
+                            </tr>
+                            <tr>
+                            <th>1</th>
+                            <td>2017</td>
+                            <td>1607952</td>
+                            </tr>
+                            <tr>
+                            <th>2</th>
+                            <td>2016</td>
+                            <td>2538397</td>
+                            </tr>
+                            <tr>
+                            <th>3</th>
+                            <td>2015</td>
+                            <td>1426211</td>
+                            </tr>
+                            <tr>
+                            <th>4</th>
+                            <td>2014</td>
+                            <td>1383677</td>
+                            </tr>
+                            <tr>
+                            <th>5</th>
+                            <td>2013</td>
+                            <td>1152163</td>
+                            </tr>
+                            <tr>
+                            <th>6</th>
+                            <td>2012</td>
+                            <td>1112041</td>
+                            </tr>
+                            <tr>
+                            <th>7</th>
+                            <td>2011</td>
+                            <td>992975</td>
+                            </tr>
+                            <tr>
+                            <th>8</th>
+                            <td>2010</td>
+                            <td>828462</td>
+                            </tr>
+                            <tr>
+                            <th>9</th>
+                            <td>2009</td>
+                            <td>834328</td>
+                            </tr>
+                            <tr>
+                            <th>10</th>
+                            <td>2008</td>
+                            <td>981303</td>
+                            </tr>
+                            <tr>
+                            <th>11</th>
+                            <td>2007</td>
+                            <td>563127</td>
+                            </tr>
+                            <tr>
+                            <th>12</th>
+                            <td>2006</td>
+                            <td>296127</td>
+                            </tr>
+                        </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                <div id="bar"></div>
+                </div>
+        </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="static/data/num_firarms.json"></script>
+    <script src="static/js/app.js"></script>
+    <script src="table.html"></script>
+    </div>
+    <footer class="footer">
+        <span class="bottom"><a href="https://www.atf.gov/resource-center/data-statistics">Information from U.S. Department of Justice</a></span>
+        
+    </footer>
+    <!--  -->
+</body>
+</html>

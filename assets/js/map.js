@@ -36,11 +36,5 @@ d3.json(geoUrls).then(function(data) {
         .attr("stroke-width", 0.5)
         .attr("stroke-linejoin", "round")
         .attr("d", d3.geoPath(projection))
-        .on('mouseover', function(d){
-            d3.select(this).attr('fill', 'yellow')
-            console.log(d)
-        })
-        .on('mouseout', function(){
-            d3.select(this).attr('fill', 'rgb(200, 200, 200)')
-        })
+        
 })

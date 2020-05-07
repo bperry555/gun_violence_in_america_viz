@@ -30,5 +30,27 @@ function init() {
         }
         init_graph() 
     })
+    d3.json("static/data/gun_own_by_state.json").then(function(data){
+        dataset=data.data
+        console.log(dataset)
+        var state=[]
+        var gunOwnership=[]
+        var pop=[]
+        var totalGuns=[]
+        for (var i=0; i<dataset.length; i++){
+            state.push(dataset[i].State)
+            pop.push(dataset[i].Pop)
+            gunOwnership.push(dataset[i].gunOwnership)
+            totalGuns.push(dataset[i].totalGuns)
+        }
+        console.log(state)
+        console.log(pop)
+        console.log(gunOwnership)
+        console.log(totalGuns)
+        
+        
+        // title: "By 2020, Gun Ownership By State by Population 2020",
+        
+    })
 }
 init();

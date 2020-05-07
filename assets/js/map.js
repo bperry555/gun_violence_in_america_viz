@@ -38,3 +38,44 @@ d3.json(geoUrls).then(function(data) {
         .attr("d", d3.geoPath(projection))
         
 })
+
+d3.json(geoUrls).then(function(data) {
+    
+    svg.append('g').classed('legend', true)
+    
+    svg.select('.legend').append('rect')
+        .datum(data)
+        .join('rect')
+        .attr('transform', 'translate(600,10)')
+        .attr('x', 20)
+        .attr('y', 20)
+        .attr('width', 220)
+        .attr('height', 20)
+        .attr('fill', 'yellow')
+})
+
+const year = [2013, 2018]
+
+viewof time = {
+
+    const slider = d3.sliderBottom()
+        .min(d3.min(times))
+        .max(d3.max(times))
+        .marks(times)
+        .width(300)
+        .tickFormat(d3.utcFormat("%Y"))
+        .tickValues(times)
+        .on("onchange", () => svg.dispatch("input"));
+  
+    const svg = d3.create("svg")
+        
+        .attr("width", 340)
+        .attr("height", 60)
+        .call(slider);
+  
+    return Object.defineProperty(
+      svg.node(), 
+      "value", 
+      {get: () => slider.value()}
+    );
+  }

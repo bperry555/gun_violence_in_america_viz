@@ -11,71 +11,57 @@ const chartMargin = {
 const chartWidth = svgWidth - chartMargin.left - chartMargin.right;
 const chartHeight = svgHeight - chartMargin.top - chartMargin.bottom;
 
-const svg = d3.selectAll('#map')
+const svg = d3.selectAll('#svg')
     .append('svg')
     .classed('viewBox', true)
     .attr('height', svgHeight)
-    .attr('width', svgWidth);
+    .attr('width', svgWidth)
+    .attr('transform', `translate(${chartWidth}/2, ${chartHeight}/2)`)
 
-
-const geoUrls = ['https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json'];   
+const topoJson = ['assets/data/counties-q-topo.json']
 
 const projection = d3.geoAlbersUsa().scale(1300).translate([487.5, 305]);
 
-d3.json(geoUrls).then(function(data) {
-    console.log(data)
+const colorScale = d3.scaleSequential(d3.interpolateTurbo).domain([0,3233])
+
+d3.json(topoJson).then(function(data) {
     
     svg.append('g').classed('map-container', true)
-    
+        .attr('transform', 'translate(10, 10)')
+
     const map = svg.select('.map-container').selectAll('.map')
-        .data(topojson.feature(data, data.objects.states).features)
+        .data(topojson.feature(data, data.objects.counties).features)
         .join('path')
-        .attr("fill", "rgb(200, 200, 200)")
+        .attr("fill", d => colorScale(+d.properties.incident))
         .classed('map', true)
         .attr("stroke", "#777")
         .attr("stroke-width", 0.5)
         .attr("stroke-linejoin", "round")
         .attr("d", d3.geoPath(projection))
-        
+
+
+
 })
+// const year = [2013, 2018]
 
-d3.json(geoUrls).then(function(data) {
-    
-    svg.append('g').classed('legend', true)
-    
-    svg.select('.legend').append('rect')
-        .datum(data)
-        .join('rect')
-        .attr('transform', 'translate(600,10)')
-        .attr('x', 20)
-        .attr('y', 20)
-        .attr('width', 220)
-        .attr('height', 20)
-        .attr('fill', 'yellow')
-})
 
-const year = [2013, 2018]
-
-viewof time = {
-
-    const slider = d3.sliderBottom()
-        .min(d3.min(times))
-        .max(d3.max(times))
-        .marks(times)
-        .width(300)
-        .tickFormat(d3.utcFormat("%Y"))
-        .tickValues(times)
-        .on("onchange", () => svg.dispatch("input"));
+//     const slider = d3.sliderBottom()
+//         .min(d3.min(times))
+//         .max(d3.max(times))
+//         .marks(times)
+//         .width(300)
+//         .tickFormat(d3.utcFormat("%Y"))
+//         .tickValues(times)
+//         .on("onchange", () => svg.dispatch("input"));
   
-    const svg = d3.create("svg")
+//     const svg = d3.create("svg")
         
-        .attr("width", 340)
-        .attr("height", 60)
-        .call(slider);
+//         .attr("width", 340)
+//         .attr("height", 60)
+//         .call(slider);
   
-    return Object.defineProperty(
-      svg.node(), 
-      "value", 
-      {get: () => slider.value()}
-    );
-  }
+//     return Object.defineProperty(
+//       svg.node(), 
+//       "value", 
+//       {get: () => slider.value()}
+//     );

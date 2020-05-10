@@ -10,7 +10,7 @@ engine = create_engine("sqlite:///static/data/clean_gunvio_vol4.sqlite")
 Base = automap_base()
 Base.prepare(engine, reflect=True)
 Base.classes.keys()
-gvdata=Base.classes.gun_vio_vol3
+gvdata=Base.classes.gun_vio_vol4
 
 session = Session(engine)
 

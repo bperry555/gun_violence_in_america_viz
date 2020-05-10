@@ -11,57 +11,80 @@ const chartMargin = {
 const chartWidth = svgWidth - chartMargin.left - chartMargin.right;
 const chartHeight = svgHeight - chartMargin.top - chartMargin.bottom;
 
+const zoom = d3.zoom()
+      .scaleExtent([1, 8])
+    //   .on("zoom", zoomed);
+
 const svg = d3.selectAll('#svg')
     .append('svg')
     .classed('viewBox', true)
     .attr('height', svgHeight)
     .attr('width', svgWidth)
-    .attr('transform', `translate(${chartWidth}/2, ${chartHeight}/2)`)
+    // .on('click', reset)
 
-const topoJson = ['assets/data/counties-q-topo.json']
+const topoJson = ['assets/data/comboTopo.json']
 
-const projection = d3.geoAlbersUsa().scale(1300).translate([487.5, 305]);
+const projection = d3.geoAlbersUsa().scale(1300).translate([svgWidth / 2, svgHeight / 2])
+// .translate([487.5, 305]);
+const path = d3.geoPath(projection)
 
-const colorScale = d3.scaleSequential(d3.interpolateTurbo).domain([0,3233])
+const colorScale = d3.scaleSequentialSqrt(d3.interpolateTurbo).domain([0,4000])
+
+const radius = d3.scaleSqrt().domain([0,3400]).range([0,15]);
 
 d3.json(topoJson).then(function(data) {
     
-    svg.append('g').classed('map-container', true)
+    const countiesMap = svg.append('g').classed('map-container', true)
         .attr('transform', 'translate(10, 10)')
+        // .on("click", clicked)
 
-    const map = svg.select('.map-container').selectAll('.map')
-        .data(topojson.feature(data, data.objects.counties).features)
-        .join('path')
-        .attr("fill", d => colorScale(+d.properties.incident))
+    countiesMap.selectAll('.map')
+      .data(topojson.feature(data, data.objects.counties).features
+      .sort(function(a,b) {return b.properties.INCIDENT - a.properties.INCIDENT}))
+      .join('path')
         .classed('map', true)
-        .attr("stroke", "#777")
-        .attr("stroke-width", 0.5)
-        .attr("stroke-linejoin", "round")
-        .attr("d", d3.geoPath(projection))
+        .attr('fill', d => colorScale(+d.properties.DENSITY))
+        .attr('stroke', 'grey')
+        .attr('stroke-width', 0.5)
+        .attr('stroke-linejoin', 'round')
+        .attr('d', path)
+        .attr('cursor', 'pointer')
+        // .on('click', clicked)
 
+    const incidents = svg.append('g').classed('incidents-container', true)
 
-
-})
-// const year = [2013, 2018]
-
-
-//     const slider = d3.sliderBottom()
-//         .min(d3.min(times))
-//         .max(d3.max(times))
-//         .marks(times)
-//         .width(300)
-//         .tickFormat(d3.utcFormat("%Y"))
-//         .tickValues(times)
-//         .on("onchange", () => svg.dispatch("input"));
-  
-//     const svg = d3.create("svg")
+    incidents.selectAll('.circle')
+      .data(topojson.feature(data, data.objects.counties).features)
+      .join('circle')
+        .attr('transform', d=> ('translate(' + path.centroid(d)[0] + ',' + path.centroid(d)[1] + ')') )
+        .attr('r', d => radius(+d.properties.INCIDENT))
+        .style('fill-opacity', .5)
+        .style('fill', 'red')
+        .style('stroke', 'white')
+        .style('stroke-width', .1)
         
-//         .attr("width", 340)
-//         .attr("height", 60)
-//         .call(slider);
-  
-//     return Object.defineProperty(
-//       svg.node(), 
-//       "value", 
-//       {get: () => slider.value()}
+})
+// function reset() {
+//     svg.transition().duration(750).call(
+//       zoom.transform,
+//       d3.zoomIdentity,
+//       d3.zoomTransform(svg.node()).invert([svgWidth / 2, svgHeight / 2])
 //     );
+//   }
+//   function clicked(d) {
+//     const [[x0, y0], [x1, y1]] = path.bounds(d);
+//     d3.event.stopPropagation();
+//     svg.transition().duration(1000).call(
+//       zoom.transform,
+//       d3.zoomIdentity
+//         .translate(svgWidth / 2, svgHeight / 2)
+//         .scale(Math.min(8, 0.9 / Math.max((x1 - x0) / svgWidth, (y1 - y0) / svgHeight)))
+//         .translate(-(x0 + x1) / 2, -(y0 + y1) / 2),
+//       d3.mouse(svg.node())
+//     );
+//   }
+//   function zoomed() {
+//     const {transform} = d3.event;
+//     map.attr("transform", transform);
+//     map.attr("stroke-width", 1 / transform.k);
+//   }

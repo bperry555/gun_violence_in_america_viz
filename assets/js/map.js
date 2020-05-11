@@ -30,14 +30,16 @@ const path = d3.geoPath(projection)
 
 const colorScale = d3.scaleSequentialSqrt(d3.interpolateTurbo).domain([0,4000])
 
-const radius = d3.scaleSqrt().domain([0,3400]).range([0,15]);
+const radius = d3.scaleSqrt().domain([0,1683]).range([0,10]);
 
 d3.json(topoJson).then(function(data) {
-    
-    const countiesMap = svg.append('g').classed('map-container', true)
-        .attr('transform', 'translate(10, 10)')
-        // .on("click", clicked)
 
+    let test = data.objects.states.geometries;
+    console.log(d3.extent(test, d => d.properties.INCIDENTS))
+    
+
+    const countiesMap = svg.append('g').classed('map-container', true)
+    
     countiesMap.selectAll('.map')
       .data(topojson.feature(data, data.objects.counties).features
       .sort(function(a,b) {return b.properties.INCIDENT - a.properties.INCIDENT}))
@@ -63,7 +65,27 @@ d3.json(topoJson).then(function(data) {
         .style('stroke', 'white')
         .style('stroke-width', .1)
         
+    const legend = svg.append('g').classed('legend-container', true)
+        .attr('transform', 'translate(740,60)')
+
+    legend.selectAll('.legend')
+        .data([0,8000, 1200, 1683])
+        .join('circle')
+        .attr('cy', d => -radius(d) * 2)
+        // .attr('cx', d => radius(d) * 2)
+        .attr('r', radius)
+        .attr('fill', 'none')
+        .attr('stroke', 'black')
+    
+    legend.append('text')
+        .attr('y', d => -2 * radius(d))
+        .attr('dy', '1.3em')
+        .text(data)
+        // .text(d3.format)
+        
+    
 })
+
 // function reset() {
 //     svg.transition().duration(750).call(
 //       zoom.transform,

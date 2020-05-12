@@ -1,0 +1,304 @@
+{
+    "data": [
+        {
+            "State": "Alaska",
+            "gunOwnership": "0.6170",
+            "totalGuns": 15824,
+            "Pop": 734002
+        },
+        {
+            "State": "Arkansas",
+            "gunOwnership": "0.5790",
+            "totalGuns": 79841,
+            "Pop": 3038999
+        },
+        {
+            "State": "Idaho",
+            "gunOwnership": "0.5690",
+            "totalGuns": 49566,
+            "Pop": 1826156
+        },
+        {
+            "State": "West Virginia",
+            "gunOwnership": "0.5420",
+            "totalGuns": 35264,
+            "Pop": 1778070
+        },
+        {
+            "State": "Wyoming",
+            "gunOwnership": "0.5380",
+            "totalGuns": 132806,
+            "Pop": 567025
+        },
+        {
+            "State": "Montana",
+            "gunOwnership": "0.5230",
+            "totalGuns": 22133,
+            "Pop": 1086759
+        },
+        {
+            "State": "New Mexico",
+            "gunOwnership": "0.4990",
+            "totalGuns": 97580,
+            "Pop": 2096640
+        },
+        {
+            "State": "Alabama",
+            "gunOwnership": "0.4890",
+            "totalGuns": 161641,
+            "Pop": 4908621
+        },
+        {
+            "State": "North Dakota",
+            "gunOwnership": "0.4790",
+            "totalGuns": 13272,
+            "Pop": 761723
+        },
+        {
+            "State": "Hawaii",
+            "gunOwnership": "0.4510",
+            "totalGuns": 7859,
+            "Pop": 1412687
+        },
+        {
+            "State": "Louisiana",
+            "gunOwnership": "0.4450",
+            "totalGuns": 116831,
+            "Pop": 4645184
+        },
+        {
+            "State": "South Carolina",
+            "gunOwnership": "0.4440",
+            "totalGuns": 105601,
+            "Pop": 5210095
+        },
+        {
+            "State": "Mississippi",
+            "gunOwnership": "0.4280",
+            "totalGuns": 35494,
+            "Pop": 2989260
+        },
+        {
+            "State": "Kentucky",
+            "gunOwnership": "0.4240",
+            "totalGuns": 81058,
+            "Pop": 4499692
+        },
+        {
+            "State": "Tennessee",
+            "gunOwnership": "0.3940",
+            "totalGuns": 99159,
+            "Pop": 6897576
+        },
+        {
+            "State": "Nevada",
+            "gunOwnership": "0.3750",
+            "totalGuns": 76888,
+            "Pop": 3139658
+        },
+        {
+            "State": "Minnesota",
+            "gunOwnership": "0.3670",
+            "totalGuns": 79307,
+            "Pop": 5700671
+        },
+        {
+            "State": "Texas",
+            "gunOwnership": "0.3570",
+            "totalGuns": 588696,
+            "Pop": 29472295
+        },
+        {
+            "State": "South Dakota",
+            "gunOwnership": "0.3500",
+            "totalGuns": 21130,
+            "Pop": 903027
+        },
+        {
+            "State": "Wisconsin",
+            "gunOwnership": "0.3470",
+            "totalGuns": 64878,
+            "Pop": 5851754
+        },
+        {
+            "State": "Colorado",
+            "gunOwnership": "0.3430",
+            "totalGuns": 92435,
+            "Pop": 5845526
+        },
+        {
+            "State": "Iowa",
+            "gunOwnership": "0.3380",
+            "totalGuns": 28494,
+            "Pop": 3179849
+        },
+        {
+            "State": "Indiana",
+            "gunOwnership": "0.3380",
+            "totalGuns": 114019,
+            "Pop": 6745354
+        },
+        {
+            "State": "Florida",
+            "gunOwnership": "0.3250",
+            "totalGuns": 343288,
+            "Pop": 21992985
+        },
+        {
+            "State": "Arizona",
+            "gunOwnership": "0.3230",
+            "totalGuns": 179738,
+            "Pop": 7378494
+        },
+        {
+            "State": "Kansas",
+            "gunOwnership": "0.3220",
+            "totalGuns": 52634,
+            "Pop": 2910357
+        },
+        {
+            "State": "Utah",
+            "gunOwnership": "0.3190",
+            "totalGuns": 72856,
+            "Pop": 3282115
+        },
+        {
+            "State": "Georgia",
+            "gunOwnership": "0.3160",
+            "totalGuns": 190050,
+            "Pop": 10736059
+        },
+        {
+            "State": "Oklahoma",
+            "gunOwnership": "0.3120",
+            "totalGuns": 71269,
+            "Pop": 3954821
+        },
+        {
+            "State": "Virginia",
+            "gunOwnership": "0.2930",
+            "totalGuns": 307822,
+            "Pop": 8626207
+        },
+        {
+            "State": "Vermont",
+            "gunOwnership": "0.2880",
+            "totalGuns": 5872,
+            "Pop": 628061
+        },
+        {
+            "State": "Michigan",
+            "gunOwnership": "0.2880",
+            "totalGuns": 65742,
+            "Pop": 10045029
+        },
+        {
+            "State": "North Carolina",
+            "gunOwnership": "0.2870",
+            "totalGuns": 152238,
+            "Pop": 10611862
+        },
+        {
+            "State": "Washington",
+            "gunOwnership": "0.2770",
+            "totalGuns": 91835,
+            "Pop": 7797095
+        },
+        {
+            "State": "Pennsylvania",
+            "gunOwnership": "0.2710",
+            "totalGuns": 236377,
+            "Pop": 12820878
+        },
+        {
+            "State": "Missouri",
+            "gunOwnership": "0.2710",
+            "totalGuns": 72995,
+            "Pop": 6169270
+        },
+        {
+            "State": "Oregon",
+            "gunOwnership": "0.2660",
+            "totalGuns": 61383,
+            "Pop": 4301089
+        },
+        {
+            "State": "Illinois",
+            "gunOwnership": "0.2620",
+            "totalGuns": 146487,
+            "Pop": 12659682
+        },
+        {
+            "State": "Massachusetts",
+            "gunOwnership": "0.2260",
+            "totalGuns": 37152,
+            "Pop": 6976597
+        },
+        {
+            "State": "Maine",
+            "gunOwnership": "0.2260",
+            "totalGuns": 15371,
+            "Pop": 1345790
+        },
+        {
+            "State": "Maryland",
+            "gunOwnership": "0.2070",
+            "totalGuns": 103109,
+            "Pop": 6083116
+        },
+        {
+            "State": "California",
+            "gunOwnership": "0.2010",
+            "totalGuns": 344622,
+            "Pop": 39937489
+        },
+        {
+            "State": "Nebraska",
+            "gunOwnership": "0.1980",
+            "totalGuns": 22234,
+            "Pop": 1952570
+        },
+        {
+            "State": "Ohio",
+            "gunOwnership": "0.1960",
+            "totalGuns": 173405,
+            "Pop": 11747694
+        },
+        {
+            "State": "Connecticut",
+            "gunOwnership": "0.1660",
+            "totalGuns": 82400,
+            "Pop": 3563077
+        },
+        {
+            "State": "New Hampshire",
+            "gunOwnership": "0.1440",
+            "totalGuns": 64135,
+            "Pop": 1371246
+        },
+        {
+            "State": "New Jersey",
+            "gunOwnership": "0.1130",
+            "totalGuns": 57505,
+            "Pop": 8936574
+        },
+        {
+            "State": "New York",
+            "gunOwnership": "0.1030",
+            "totalGuns": 76207,
+            "Pop": 19440469
+        },
+        {
+            "State": "Rhode Island",
+            "gunOwnership": "0.0580",
+            "totalGuns": 4223,
+            "Pop": 1056161
+        },
+        {
+            "State": "Delaware",
+            "gunOwnership": "0.0520",
+            "totalGuns": 4852,
+            "Pop": 982895
+        }
+    ]
+}

@@ -13,8 +13,7 @@ const chartHeight = svgHeight - chartMargin.top - chartMargin.bottom;
 
 const zoom = d3.zoom()
       .scaleExtent([1, 8])
-    //   .on("zoom", zoomed);
-
+      
 const svg = d3.selectAll('#svg')
     .append('svg')
     .classed('viewBox', true)
@@ -51,7 +50,7 @@ d3.json(topoJson).then(function(data) {
         .attr('stroke-linejoin', 'round')
         .attr('d', path)
         .attr('cursor', 'pointer')
-        // .on('click', clicked)
+        // .on('mouseover', clicked)
 
     const incidents = svg.append('g').classed('incidents-container', true)
 
@@ -72,7 +71,6 @@ d3.json(topoJson).then(function(data) {
         .data([0,8000, 1200, 1683])
         .join('circle')
         .attr('cy', d => -radius(d) * 2)
-        // .attr('cx', d => radius(d) * 2)
         .attr('r', radius)
         .attr('fill', 'none')
         .attr('stroke', 'black')
@@ -80,10 +78,7 @@ d3.json(topoJson).then(function(data) {
     legend.append('text')
         .attr('y', d => -2 * radius(d))
         .attr('dy', '1.3em')
-        .text(data)
-        // .text(d3.format)
-        
-    
+        .text(data)    
 })
 
 // function reset() {

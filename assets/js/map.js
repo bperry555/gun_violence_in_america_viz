@@ -43,7 +43,26 @@ d3.json(topoJson).then(function(data) {
         .attr('stroke-linejoin', 'round')
         .attr('d', path)
         .attr('cursor', 'pointer')
-
+        .on('mouseover', function (d,i) {
+            d3.select(this).transition()
+                 .duration('50')
+                 .attr('opacity', '.85');
+            infoBox.transition()
+                .duration(50)
+                .style("opacity", 1)
+        }) 
+        .on('mouseout', function (d, i) {
+            d3.select(this).transition()
+                 .duration('50')
+                 .attr('opacity', '1')
+                 .attr('fill', 'white')
+            infoBox.transition()
+                .duration('50')
+                 .style("opacity", 0)
+        })
+        .on('mouseclick', function(d,i) {
+            console.log(d, i)
+        })
     const incidents = svg.append('g').classed('incidents-container', true)
 
     incidents.selectAll('.circle')
@@ -60,5 +79,21 @@ d3.json(topoJson).then(function(data) {
         .attr('transform', 'translate(740,60)')
 
     const sliderBox = svg.append('g').classed('slider-box', true)
+
+    const infoBox = svg.append('g').classed('info-box', true)
+
+        infoBox.append('div').append('text')
+        .classed('info-text', true)
+        // .attr('stroke', 'black')
+        // .attr('stroke-width', .5)
+    
+        infoBox
+
+        infoBox.append('rect')
+        .attr('transform', 'translate(680,10)')
+        .attr('height', 100)
+        .attr('width', 150)
+        .attr('opacity', 0)
+        
 
 })

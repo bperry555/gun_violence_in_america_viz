@@ -63,6 +63,7 @@ const renderMap = () =>{
         chartMargin,
         mapWidth,
         mapHeight,
+        selectedMap,
         title: "Population by Sq Mile",
         data
       })

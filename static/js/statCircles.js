@@ -8,7 +8,7 @@ export const statCircles = (selection, props) => {
 
     const statContainer = selection.append('g')
         .classed('stat-container', true)
-        .attr('translate', `transform(${chartMargin.left}, ${chartMargin.topo})`)
+        .attr('translate', `transform(${chartMargin.left}, ${chartMargin.top})`)
         
         var dataset = [{
             "label": "test",
@@ -37,7 +37,7 @@ export const statCircles = (selection, props) => {
           
           statContainer.append("circle")
             .classed('stat-circle', true)
-            .attr("transform", `translate(${mapWidth}, ${height})`)
+            .attr("transform", `translate(${mapWidth + 85}, ${height})`)
             .attr("fill", "#ffffff")
             .attr("stroke", "#dfe5e6")
             .attr("stroke-width", 1)

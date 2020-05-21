@@ -15,7 +15,9 @@ export const choroMap = (selection, props) => {
     const path = d3.geoPath(projection);
 
     const incidentMinMax = d3.extent(selectedMap.geometries, d => d.properties.INCIDENT)
-    const colorScale = d3.scaleSequentialSqrt(d3.interpolateTurbo).domain(incidentMinMax)
+    const popMinMax = d3.extent(selectedMap.geometries, d => d.properties.DENSITY)
+
+    const colorScale = d3.scaleSequentialSqrt(d3.interpolateTurbo)
 
     
     const radius = d3.scaleSqrt().domain(d3.extent(selectedMap.geometries, d => d.properties.INCIDENT)).range([0,15]);
@@ -28,9 +30,9 @@ export const choroMap = (selection, props) => {
             .data(topojson.feature(data, selectedMap).features)
             .join('path')
               .classed('map', true)
-              .attr('fill', d => colorScale(+d.properties.DENSITY))
-              // .attr('stroke', 'grey')
-              // .attr('stroke-width', 0.5)
+              .attr('fill', d => colorScale.domain(popMinMax)(+d.properties.DENSITY))
+              .attr('stroke', 'black')
+              .attr('stroke-width', 0.2)
               // .attr('stroke-linejoin', 'round')
               .attr('d', path)
               .attr('cursor', 'pointer')

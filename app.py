@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, render_template
+from flask import Flask, jsonify, render_template, request, make_response
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 
@@ -13,7 +13,7 @@ ma = Marshmallow(app)
 
 class Gun_vio_vol4(db.Model):
     incident_id = db.Column(db.Integer, primary_key=True)
-    date = db.Column(db.DateTime)
+    date = db.Column(db.TEXT)
     state = db.Column(db.TEXT)
     city_or_county = db.Column(db.TEXT)
     address = db.Column(db.TEXT)
@@ -38,18 +38,27 @@ class IncidentSchema(ma.SQLAlchemyAutoSchema):
 incident_schema = IncidentSchema()
 incidents_schema = IncidentSchema(many=True)
 
-
 @app.route('/')
-def hello():
-  first_entry = Gun_vio_vol4.query.limit(1000).all()
-  result = incidents_schema.dump(first_entry)
-  return jsonify(result)
+def home():
+  return render_template('landingPage.html')
 
-@app.route('/2015')
-def year15():
-  year15_filter = Gun_vio_vol4.query.filter_by(year='2015').limit(1000).all()
-  year15_result = incidents_schema.dump(year15_filter)
-  return jsonify(year15_result)
+@app.route('/stateapi')
+def apiHome():
+  return render_template('api.html')
+
+
+@app.route('/query', methods=['POST'])
+def apiquery():
+    
+  req = request.get_json()
+
+  print(req)
+
+  user_query = Gun_vio_vol4.query.filter_by(year=req['year']).filter_by(state=req['state']).limit(1000).all()
+  user_result = incidents_schema.dump(user_query)
+
+  return jsonify(user_result)
+
 
 if __name__ == '__main__':
     app.run(debug=True)

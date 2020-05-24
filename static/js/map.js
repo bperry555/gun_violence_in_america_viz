@@ -49,13 +49,22 @@ const mapView = mapId => {
 };
 
 
-const renderMap = () =>{  
+const renderMap = () =>{ 
+
+    const incidentMinMax = d3.extent(selectedMap.geometries, d => d.properties.INCIDENT)
+    const radius = d3.scaleSqrt().domain(incidentMinMax).range([0,15]);
+
+    const densValues = selectedMap.geometries.map(x => x.properties.DENSITY)
+    const color = d3.scaleSequentialQuantile(densValues, d3.interpolateBlues);
+    
     svg.call(choroMap, {
         title: 'Shootings displayed per sq Mile.',
         chartMargin,
         mapWidth,
         mapHeight,
         selectedMap,
+        radius,
+        color,
         toolTip,
         data
     })
@@ -64,6 +73,8 @@ const renderMap = () =>{
         mapWidth,
         mapHeight,
         selectedMap,
+        color,
+        radius,
         title: "Population by Sq Mile",
         data
       })

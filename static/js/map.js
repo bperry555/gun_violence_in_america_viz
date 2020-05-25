@@ -81,13 +81,13 @@ const renderMap = () =>{
 };
 
 
-d3.json("data/comboTopo.json").then(mapData => {
+d3.json("data/topo.json").then(mapData => {
     
     data = mapData;
     console.log(data)
 
     mapCounties = data.objects.counties;
-    mapState = data.objects.states;
+    mapState = data.objects.state;
     
     mapView();
     
@@ -104,6 +104,4 @@ d3.json("data/comboTopo.json").then(mapData => {
         data
     });
 });
-
-
 

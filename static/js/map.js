@@ -18,7 +18,7 @@ const svg = d3.selectAll('#svg-container')
     .attr('height', svgHeight)
     .attr('width', svgWidth);
     
-
+console.log(svg.html)
 let data;
 let mapCounties= [];
 let mapState = [];
@@ -56,6 +56,7 @@ const renderMap = () =>{
 
     const densValues = selectedMap.geometries.map(x => x.properties.DENSITY)
     const color = d3.scaleSequentialQuantile(densValues, d3.interpolateBlues);
+    console.log('did we get this far?')
     
     svg.call(choroMap, {
         title: 'Shootings displayed per sq Mile.',
@@ -81,10 +82,10 @@ const renderMap = () =>{
 };
 
 
-d3.json("data/topo.json").then(mapData => {
+d3.json("../static/data/topo.json").then(mapData => {
     
     data = mapData;
-    console.log(data)
+    console.log('hello', data)
 
     mapCounties = data.objects.counties;
     mapState = data.objects.state;

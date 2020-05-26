@@ -11,7 +11,7 @@ export const choroMap = (selection, props) => {
         data
     } = props;
 
-
+    console.log(data, selectedMap)
     const projection = d3.geoAlbersUsa().scale(1300).translate([mapWidth / 2, mapHeight / 2]);
     const path = d3.geoPath(projection);
     

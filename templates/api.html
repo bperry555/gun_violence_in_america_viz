@@ -5,7 +5,8 @@
   <meta charset="UTF-8">
   <title>Data Visualization of Gun Violence</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-  <link rel="stylesheet" href="static/css/style.css">
+  <link rel="stylesheet" href="../static/css/style.css">
+  <link rel="icon" href="data:,">
 
 </head>
 
@@ -45,76 +46,18 @@
           <div class='container-fluid'>
             <div class="form-group">
               <label for="exampleFormControlSelect1">Example select</label>
-              <select class="form-control" id="statesList">
-                <option>Alabama</option>
-                <option>California</option>
-                <option>Colorodo</option>
-                <option>Texas</option>
-                <option>Nevada</option>
-              </select>
+              <select class="form-control" id="statesList"></select>
             </div>
           </div>
           <div class='container-fluid'>
-            <button type="button" id='selectionBtn' onClick='getSelections();' class="btn btn-primary btn-lg">Search</button>
+            <button type="button" id='selectionBtn' class="btn btn-primary btn-lg">Search</button>
           </div>
         </div>
       </div>
     </div>
   </div>
 <script>
-  // Fetch Request Button onClick
-  // document.getElementById('selectionBtn').addEventListener('click', getSelections);
-  // Radio Button Selection Variatble
-  var radioBtns = document.getElementsByTagName('input');
-  var value;
-  // Dropdown Selection by State Variable
-  var stateSelect;
-  var stateChoice;
-  var userData;
-
-  function getSelections(){
-    for (var i = 0; i < radioBtns.length; i++) {
-      if (radioBtns[i].type === 'radio' && radioBtns[i].checked) {
-          // get value, set checked flag or do whatever you need to
-          value = radioBtns[i].value;   
-      }
-    }
-    stateSelect = document.getElementById('statesList')
-    stateChoice = stateSelect.options[stateSelect.selectedIndex].text;
-    
-    var selection = {
-      year: value,
-      state: stateChoice
-    };
-    console.log(selection)
-    fetch(`${window.origin}/query`, {
-      method: 'POST',
-      headers: {
-        'accept': 'application/json',
-        'content-type': 'application/json'
-      },
-      body: JSON.stringify(selection),
-      cache: 'no-cache'
-      })
-      .then(function (response) {
-        if (response.status !== 200) {
-          console.log('ERROR')
-          return;
-        }
-        response.json().then(function (data) {
-        userData = data
-        console.log(data)
-        })
-        
-      })
-      
-    // let url = new URL('/query'),
-    //   params = {year:value, state:stateChoice}
-    // Object.keys(params).forEach(key => url.searchParams.append(key, params[key]))
-    // fetch(url).then((response,data) => {
-    //   console.log(data)
-    // })
-    }
+  
 </script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
@@ -122,6 +65,8 @@
 <script src="https://unpkg.com/topojson@3"></script>
 <script src="https://d3js.org/d3.v5.min.js"></script>
 <script src="https://d3js.org/d3.v5.js"></script>
+<script type="module" src="../static/js/mapApi.js"></script>
+<script type="module" src="../static/js/statesMap.js"></script>
 
 </body>
 

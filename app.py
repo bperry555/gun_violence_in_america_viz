@@ -1,8 +1,10 @@
 from flask import Flask, jsonify, render_template, request, make_response
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
+from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
+CORS(app)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///static/data/clean_gunvio_vol4.sqlite'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -42,12 +44,17 @@ incidents_schema = IncidentSchema(many=True)
 def home():
   return render_template('landingPage.html')
 
+@app.route('/choropleth')
+def choropleth():
+  return render_template('bindex.html')
+
 @app.route('/stateapi')
 def apiHome():
   return render_template('api.html')
 
 
 @app.route('/query', methods=['POST'])
+@cross_origin()
 def apiquery():
     
   req = request.get_json()

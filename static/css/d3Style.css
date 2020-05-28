@@ -1,7 +1,15 @@
-.map {
-    /* stroke: #606060;
-    stroke-width: 0.5px; */
-    /* stroke-linejoin: round;
-    stroke-linecap: round; */
-    float: left;
+.state-map {
+    stroke: whitesmoke;
+    stroke-width: 0.5px;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+    fill:#606060
 };
+/* .counties {
+    fill:#606060
+} */
+circle {
+    stroke-width: 1px;
+    fill:  orange;
+    stroke: black;
+}

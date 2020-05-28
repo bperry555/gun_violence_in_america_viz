@@ -10,18 +10,14 @@ let data;
   let stateSelect;
   let stateSelected;
   let stateChoice;
-  let userData;
-
-
-  let bb = document.querySelector ('#map-svg')
-                    .getBoundingClientRect(),
-       width = bb.right - bb.left;
+  let incidentData;
   
 
   const svgHeight = window.innerHeight;
+  const svgWidth = window.innerHeight;
   
   const chartMargin = { top: 30, right: 30, bottom: 30, left: 30 };
-  const chartWidth = width - chartMargin.left - chartMargin.right;
+  const chartWidth = svgWidth - chartMargin.left - chartMargin.right;
   const chartHeight = svgHeight - chartMargin.top - chartMargin.bottom;
   
   
@@ -41,7 +37,8 @@ const dropdown = () => {
 const render = () => {
   svg.call(statesMap, {
       title: 'testing',
-      stateValue: stateSelected,
+      incidentList: incidentData,
+      stateName: stateChoice,
       chartMargin,
       chartWidth,
       chartHeight,
@@ -70,22 +67,23 @@ const getSelections = () => {
       headers: {
         'accept': 'application/json',
         'content-type': 'application/json'
-      },
+        },
       body: JSON.stringify(selection),
       cache: 'no-cache'
-      })
-      .then(function (response) {
-        if (response.status !== 200) {
-          console.log('ERROR')
-          return;
-        }
-        response.json().then(function (responseData) {
-        userData = responseData
-        console.log('userData: ', userData)
+    })
+
+    .then(response => {
+      if (response.status !== 200) {
+        console.log('ERROR')
+        return;
+      } else {
+        response.json().then(responseData => {
+        incidentData = responseData
+        render()
         })
-        
-      })
-      render()
+      }
+    })
+      
 }
 
 const searchBtn = d3.selectAll('#selectionBtn')
@@ -94,6 +92,6 @@ const searchBtn = d3.selectAll('#selectionBtn')
 d3.json("../static/data/states.json").then(mapData => {
     data = mapData
     console.log(data)
-    dropdown()
-    
+    dropdown()    
+
 })

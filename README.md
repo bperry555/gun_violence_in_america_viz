@@ -16,5 +16,6 @@ This project was to visualize various features from the dataset (name) found on 
   - D3 for it's very robust and customizible mapping capabilities.
 - Python/Flask
   - Flask for a simple backend.  Ease of setting up an RESTful API endpoint.
+- HTML & Bootstrap
 - SQLite
   - SQLite is used since this project won't be hosted on a live server.  Since this is going to be a locally stored static database used for queries, all data was loaded into one table.

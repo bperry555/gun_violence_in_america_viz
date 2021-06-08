@@ -1,4 +1,4 @@
-# Data Visualization of Gun Violence Across America
+# Data Visualization of Gun Violence in America
 
 add link to live project.
 
